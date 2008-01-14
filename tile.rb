@@ -14,8 +14,8 @@ class Tile
   # top-to-bottom, left-to-right order.
   def neighbours
     neighbours = []
-    (@x-1 .. @x+1).each do |x|
-      (@y-1 .. @y+1).each do |y|
+    [@x-1, @x, @x+1].each do |x|
+      [@y-1, @x, @y+1].each do |y|
         if x >= 0 && y >= 0 && x <= MAX_X && y <= MAX_Y && !(x == @x && y == @y)
           neighbours << [x,y]
         end
