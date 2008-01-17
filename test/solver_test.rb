@@ -13,7 +13,7 @@ class TestSolver < Test::Unit::TestCase
       m n o p
     ]
     @board = Board.new(letters)
-    @dict = Dictionary.new('dict.txt')
+    @dict = Dictionary.new('test/dict.txt')
   end
 
   def test_explore_path
