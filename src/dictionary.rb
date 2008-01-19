@@ -10,6 +10,16 @@ class Dictionary
     _assign_prefixes
   end
   
+  def has_prefix?(prefix)
+    return @prefixes.has_key?(prefix)
+  end
+  
+  def [](word)
+    return @dict[word]
+  end
+  
+  private
+  
   def _assign_prefixes
     @prefixes = Hash.new(0)
     @dict.each_key do |word|
@@ -20,11 +30,4 @@ class Dictionary
     end
   end
   
-  def has_prefix?(prefix)
-    return @prefixes.has_key?(prefix)
-  end
-  
-  def [](word)
-    return @dict[word]
-  end
 end
