@@ -50,4 +50,10 @@ class TestTile < Test::Unit::TestCase
     t = Tile.new(0,0,"a")
     assert_equal("a[0,0]", t.to_s)
   end
+  
+  def test_qu
+    t = Tile.new(0,0,"q")
+    assert_equal("q[0,0]", t.to_s)
+    assert_equal("qu", t.letter)
+  end
 end

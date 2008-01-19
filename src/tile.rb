@@ -3,11 +3,23 @@
 class Tile
   MAX_X = 3
   MAX_Y = 3
-  attr_reader :x,:y, :letter
+  attr_reader :x,:y
+
   def initialize(x, y, letter)
     @x = x
     @y = y
     @letter = letter
+  end
+
+  # Return the stored letter.  Except if it's a "q", we return "qu".
+  # Them's the rules.
+  def letter
+    case @letter
+    when "q"
+      "qu"
+    else
+      @letter
+    end
   end
   
   # List all the surrounding neighbours for a tile.  They are listed in
