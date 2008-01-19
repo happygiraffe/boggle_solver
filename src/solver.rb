@@ -16,18 +16,18 @@ class Solver
   end
   
   def explore_path(path)
-    prefix = prefix_of(path)
-    # puts ">> explore_path prefix=#{prefix}"
+    # It's called word, but it might be a prefix of a word.
+    word = prefix_of(path)
 
     # No point continuing unless it's in the dictionary.
-    return [] unless @dict.has_prefix?(prefix)
+    return [] unless @dict.has_prefix?(word)
 
     # Pull out all neighbour tiles we haven't yet seen.
     neighbours = @board.neighbours_of(path[-1]) - path
 
     # If we get this far, we might well be looking at a valid word.
     words = []
-    words << prefix if @dict[prefix] && prefix.length > 2
+    words << word if @dict[word] && word.length > 2
 
     # Check each of our neighbours for further words.
     neighbours.each do |t|
@@ -35,7 +35,6 @@ class Solver
       new_path = path.dup << t
       words += explore_path(new_path)
     end
-    # puts "<< explore_path prefix=#{prefix} words=#{words.join(' ')}"
     return words
   end
   
