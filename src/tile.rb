@@ -16,9 +16,9 @@ class Tile
   def letter
     case @letter
     when "q"
-      "qu"
+      return "qu"
     else
-      @letter
+      return @letter
     end
   end
   

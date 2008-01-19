@@ -15,13 +15,13 @@ class Board
   end
   
   def to_s
-    @board.map do |row|
+    return @board.map do |row|
        row.map { |t| t.letter }.join(" ")
     end.join("\n")
   end
   
   def [](x,y)
-    @board[x][y]
+    return @board[x][y]
   end
   
   # Iterate over each tile in turn, top-to-bottom, left-to-right.
@@ -34,7 +34,7 @@ class Board
   end
   
   def neighbours_of(t)
-    t.neighbours.map do |point|
+    return t.neighbours.map do |point|
       x, y = *point
       @board[x][y]
     end
