@@ -20,13 +20,17 @@ end
 options = {
   :dictfile => "/usr/share/dict/words", 
 }
-OptionParser.new do |op|
-  op.on('-d') do |val|
-    options[:dictfile] = val
-  end
-end.parse!
-  
-letters = ARGV.join(' ').split(/\s+/)
+letters = []
+begin
+  OptionParser.new do |op|
+    op.on('-d') do |val|
+      options[:dictfile] = val
+    end
+  end.parse!
+  letters = ARGV.join(' ').split(/\s+/)
+rescue OptionParser::InvalidOption => e
+  usage
+end
 usage unless letters.size == 16
 
 puts ">> #{Time.now}: Making board."
