@@ -5,7 +5,10 @@ require 'dictionary'
 require 'solver'
 
 def usage
-  $stderr.puts("usage: #{File.basename($0)} letters")
+  $stderr.puts(<<USAGE)
+usage: #{File.basename($0)} letters
+NB: "q" is treated as "qu".
+USAGE
   exit(2)
 end
 
