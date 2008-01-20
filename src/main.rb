@@ -1,25 +1,37 @@
 #!/usr/bin/ruby
 
+# Ruby.
+require 'optparse'
+
+# App.
 require 'board'
 require 'dictionary'
 require 'solver'
 
 def usage
   $stderr.puts(<<USAGE)
-usage: #{File.basename($0)} letters
+usage: #{File.basename($0)} [-d dictfile] letters
 NB: "q" is treated as "qu".
 USAGE
   exit(2)
 end
 
-#letters = %w[a b c d e f g h i j k l m n o p]
+options = {
+  :dictfile => "/usr/share/dict/words", 
+}
+OptionParser.new do |op|
+  op.on('-d') do |val|
+    options[:dictfile] = val
+  end
+end.parse!
+  
 letters = ARGV.join(' ').split(/\s+/)
 usage unless letters.size == 16
 
 puts ">> #{Time.now}: Making board."
 board = Board.new(letters)
 puts ">> #{Time.now}: Making dictionary."
-dict = Dictionary.new('/usr/share/dict/words')
+dict = Dictionary.new(options[:dictfile])
 puts ">> #{Time.now}: Making Solver."
 solver = Solver.new(board, dict)
 puts ">> #{Time.now}: Solving."
