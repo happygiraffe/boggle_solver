@@ -11,6 +11,7 @@ require 'solver'
 def usage
   $stderr.puts(<<USAGE)
 usage: #{File.basename($0)} [-d dictfile] letters
+NB: You must supply 16 letters in left-to-right, top-to-bottom order.
 NB: "q" is treated as "qu".
 USAGE
   exit(2)
