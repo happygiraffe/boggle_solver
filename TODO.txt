@@ -1,1 +1,2 @@
 * Make dictionary initialisation quicker.
+* Add scoring to the output.
